@@ -1,0 +1,25 @@
+class Solution {
+    private:
+    void dfs(int node, vector<vector<int>>&adj, 
+    vector<int>&visited, vector<int>&ans){
+        visited[node]=1;
+        ans.push_back(node);
+        
+        for(auto i: adj[node]){
+            if(!visited[i]){
+                dfs(i, adj, visited, ans);
+            }
+        }
+    }
+  public:
+    vector<int> dfs(vector<vector<int>>& adj) {
+       
+       vector<int>ans;
+       int v= adj.size();
+       
+       vector<int>visited(v,0);
+       dfs(0, adj, visited, ans);
+       return ans;
+        
+    }
+};
